@@ -1,5 +1,9 @@
 *.csv
 *.json
+
+# Mac File
+.DS_Store
+
 forbes2000/
 nasdaq/
 nyse/
