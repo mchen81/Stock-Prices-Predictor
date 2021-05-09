@@ -30,7 +30,7 @@ This method will fetch the real time stock data of a company(by stock_code)
 Two paramters can be set:
 
 * stock_code: Search for a company [here](https://finance.yahoo.com/lookup), then you will know its stock code. (e.g. Microsoft Corporation (MSFT))
-* period: accept year, month and day. For example, 1y=1 year(default) , 2m=2 month, 10d=10 day
+* period: Accept units like year, month and day. For example, 1y=1 year , 2m=2 month, 10d=10 day. Fetch all data if it is not given.
 
 # Main Script
 
