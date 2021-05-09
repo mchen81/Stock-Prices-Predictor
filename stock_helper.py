@@ -63,7 +63,7 @@ def generate_indicators(dataset, timeperiod=5, generate_target=True, reset_index
     
     return combined
 
-def fetch_stock_data(stock_code, period='1y'):
+def fetch_stock_data(stock_code, period='100y'):
     stock = yf.Ticker(stock_code)
     history = stock.history(period=period)
     if len(history) == 0:
