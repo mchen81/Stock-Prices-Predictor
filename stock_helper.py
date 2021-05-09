@@ -58,7 +58,7 @@ def generate_indicators(dataset, timeperiod=5, generate_target=True, reset_index
     combined = pd.concat(frames, axis = 1)
     
     if(generate_target):
-        target_name = 'passed_' + str(timeperiod) + 'day_trend'
+        target_name = 'next_' + str(timeperiod) + 'day_trend'
         combined[target_name] = np.where(combined.close.shift(-timeperiod) > combined.close, 1, 0)
     
     return combined
