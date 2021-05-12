@@ -1,17 +1,24 @@
 #!/usr/bin/python
 
+# general 
 import sys
 import stock_helper
 import pandas as pd
 import numpy as np
 import datetime
-
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
 from business_calendar import Calendar, MO, TU, WE, TH, FR
 
+# machine learning
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
 import xgboost as xgb
+
 
 arg_length = len(sys.argv)
 
@@ -68,21 +75,25 @@ train_y = Y[:split_point]
 test_X = X.iloc[split_point:, :]
 test_y = Y[split_point:]
 
-# Initilize 3 models
-# We will pick one of them with highest performace in the final prediction
 
-decistion_tree_model = DecisionTreeClassifier(max_depth=2)
-random_forest_model = RandomForestClassifier(max_depth=5)
-xgb_moel = xgb.XGBClassifier(use_label_encoder=False)
+# Initialize models 
+models = []
+models.append(DecisionTreeClassifier(max_depth=5))
+models.append(RandomForestClassifier(max_depth=5))
+models.append(GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=5))
+models.append(xgb.XGBClassifier(use_label_encoder=False, eval_metric='error'))
+models.append(SVC())
+models.append(KNeighborsClassifier())
+models.append(LogisticRegression())
+models.append(GaussianNB())
 
-models = [decistion_tree_model, random_forest_model, xgb_moel]
 accuracies = [None] * len(models)
 
 for i, model in enumerate(models):
     model.fit(train_X, train_y)
     hyp = model.predict(test_X)
     accuracies[i] = accuracy_score(test_y, hyp)
-
+    
 # Get the best model
 max_accuracy_index = accuracies.index(max(accuracies))
 max_accuracy_model = models[max_accuracy_index]
