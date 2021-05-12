@@ -1,9 +1,5 @@
 # CS663-Spring2021-Stock-Prices-Predictor
 
-# Description
-
-TODO
-
 # Libaray
 Before running the scripts, some external libraries have to be installed.   
 
@@ -14,7 +10,7 @@ Before running the scripts, some external libraries have to be installed.
 
 **Other ML libraries like numpy, pandas, sklearn, tensorflow are also needed.**
 
-# Prediction Script
+# Usage of prediction Script
 The [predictor.py](/predictor.py) predicts the trend of next n days for a company.   
 You **MUST** provide the first argument, which is stock code(can be found [here](https://finance.yahoo.com/lookup)).  
 The second argument is time period, which is optional(default is 5 days).   
