@@ -47,6 +47,10 @@ Two paramters can be set:
 
 # Notebook
 
-TODO
+1. [KaggleDataProcess](/KaggleDataProcess.ipynb)
+This notebook takes the dataset from [kaggle](https://www.kaggle.com/paultimothymooney/stock-market-data), and makes some EDA, preproceesing, model traning.
+
+2. [Stock_Predictor](/Stock_Predictor.ipynb)
+This notebook takes the real time data from Yahoo Finance, and trains 9 different models. You can have a visualization on the performances of differernt companies. 
 
 
